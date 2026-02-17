@@ -88,13 +88,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/riceharvest/opensourceframework.git",
-    "directory": "packages/next-images"
+    "url": "git+https://github.com/riceharvest/next-images.git"
   },
   "bugs": {
-    "url": "https://github.com/riceharvest/opensourceframework/issues?q=is%3Aissue+is%3Aopen+next-images"
+    "url": "https://github.com/riceharvest/next-images/issues"
   },
-  "homepage": "https://github.com/riceharvest/opensourceframework/tree/main/packages/next-images#readme",
+  "homepage": "https://github.com/riceharvest/next-images#readme",
   "publishConfig": {
     "access": "public"
   },
