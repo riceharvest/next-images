@@ -1,48 +1,105 @@
 {
-  "name": "opensourceframework",
-  "version": "0.0.0",
-  "private": true,
-  "description": "Maintained forks of abandoned npm packages",
+  "name": "@opensourceframework/next-images",
+  "version": "1.9.0",
+  "description": "Import images (jpg, jpeg, png, svg, gif, ico, webp, jp2, avif) in Next.js applications. Fork of next-images with TypeScript support.",
   "keywords": [
-    "npm",
-    "forks",
-    "maintenance",
-    "open-source"
+    "next.js",
+    "nextjs",
+    "images",
+    "image-loader",
+    "file-loader",
+    "url-loader",
+    "webpack",
+    "svg",
+    "png",
+    "jpg",
+    "base64"
   ],
-  "author": "OpenSource Framework Contributors",
+  "author": "OpenSource Framework Contributors (original by Aref Aslani / twopluszero)",
+  "contributors": [
+    {
+      "name": "Aref Aslani (twopluszero)",
+      "url": "https://github.com/twopluszero",
+      "role": "Original author"
+    }
+  ],
   "license": "MIT",
   "type": "module",
-  "engines": {
-    "node": ">=20.0.0",
-    "pnpm": ">=9.0.0"
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    },
+    "./global.d.ts": "./src/global.d.ts"
   },
-  "packageManager": "pnpm@9.15.0",
+  "typesVersions": {
+    "*": {
+      "global.d.ts": [
+        "./src/global.d.ts"
+      ]
+    }
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "src/global.d.ts",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE"
+  ],
   "scripts": {
-    "build": "turbo run build",
-    "dev": "turbo run dev",
-    "lint": "turbo run lint",
-    "test": "turbo run test",
-    "test:coverage": "turbo run test:coverage",
-    "format": "prettier --write .",
-    "format:check": "prettier --check .",
-    "typecheck": "turbo run typecheck",
-    "clean": "turbo run clean && rm -rf node_modules",
-    "changeset": "changeset",
-    "version-packages": "changeset version",
-    "release": "turbo run build && changeset publish",
-    "release:canary": "turbo run build && changeset publish --tag canary"
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "lint": "eslint src/",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run --passWithNoTests",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "clean": "rm -rf dist coverage node_modules"
+  },
+  "dependencies": {
+    "file-loader": "^6.2.0",
+    "url-loader": "^4.1.0"
   },
   "devDependencies": {
-    "@changesets/cli": "^2.27.0",
-    "@commitlint/cli": "^19.0.0",
-    "@commitlint/config-conventional": "^19.0.0",
     "@types/node": "^22.0.0",
-    "eslint": "^9.0.0",
-    "husky": "^9.0.0",
-    "prettier": "^3.0.0",
     "tsup": "^8.0.0",
-    "turbo": "^2.0.0",
     "typescript": "^5.0.0",
     "vitest": "^2.0.0"
+  },
+  "peerDependencies": {
+    "webpack": "^4.0.0 || ^5.0.0"
+  },
+  "peerDependenciesMeta": {
+    "webpack": {
+      "optional": true
+    }
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/riceharvest/opensourceframework.git",
+    "directory": "packages/next-images"
+  },
+  "bugs": {
+    "url": "https://github.com/riceharvest/opensourceframework/issues?q=is%3Aissue+is%3Aopen+next-images"
+  },
+  "homepage": "https://github.com/riceharvest/opensourceframework/tree/main/packages/next-images#readme",
+  "publishConfig": {
+    "access": "public"
+  },
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/opensourceframework"
   }
 }
